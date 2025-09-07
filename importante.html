@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Para Mi Susi! 🌹🍂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* --- MÓDULO DE COLORES EDITABLES (TEMÁTICA OTOÑO) --- */
+        :root {
+            --color-petalo-principal: #FF8C00;
+            --color-petalo-gradiente: #E45C00;
+            --color-petalo-neon: rgba(255, 140, 0, 0.7);
+            --color-centro-flor: #FFD700;
+            --color-centro-flor-sombra: #DAA520;
+            --color-luz-particula-1: #FFB6C1;
+            --color-luz-particula-2: #FFFACD;
+            --color-tallo-principal: #6B8E23;
+            --color-tallo-hoja: #8B4513;
+            --color-pasto-brillante: #B8860B;
+            --color-sombra-hojas: rgba(0, 0, 0, 0.3);
+            --color-luz-hojas: rgba(255, 255, 255, 0.2);
+            --color-fondo-oscuro: rgba(50, 20, 0, 0.9);
+            --color-superposicion-fondo: rgba(50, 20, 0, 0.85);
+            --color-titulo: #D2691E;
+            --color-titulo-neon: rgba(255, 140, 0, 0.5);
+            --color-sombra-titulo: rgba(0, 0, 0, 0.8);
+            --color-overlay-glow: rgba(255, 140, 0, 0.8);
+            --color-overlay-title: #ffffff;
+            --color-overlay-title-neon: rgba(255, 255, 255, 0.7);
+            --color-intro-background: #D2691E;
+        }
+
+        /* --- FIN DEL MÓDULO DE COLORES --- */
+
+        *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--color-fondo-oscuro);
+            background-image: url('image_fbd1fe.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* --- ESTILOS PARA LA PANTALLA DE INICIO CON ANIMACIÓN DE VAQUITA Y CUPCAKES --- */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('fondo_hojas_otono.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: pointer;
+            transition: opacity 1s ease-in-out;
+            color: white;
+            font-family: 'Great Vibes', cursive;
+            text-align: center;
+            padding: 20px;
+            position: relative; 
+        }
+
+        #intro-overlay img {
+            max-width: 80%;
+            height: auto;
+            max-height: 80vh;
+            animation: pulse-vaquita 2s infinite alternate ease-in-out,
+                       glow-vaquita 2s infinite alternate ease-in-out;
+            transform-origin: center bottom;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            border-radius: 15px;
+            z-index: 100;
+        }
+
+        #intro-overlay .click-message {
+            margin-top: 20px;
+            font-size: clamp(1rem, 4vw, 2.5rem);
+            animation: pulse-text 1.5s infinite;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            z-index: 100;
+        }
+
+        /* --- ESTILOS PARA LOS CUPCAKES DE OTOÑO --- */
+        .autumn-cupcake {
+            position: absolute;
+            width: 80px; 
+            height: 80px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+            animation: float-cupcake 4s ease-in-out infinite alternate; 
+            z-index: 90; 
+        }
+
+        .autumn-cupcake:nth-child(even) {
+            background-image: url('cupcake_otono.png');
+        }
+
+        .autumn-cupcake:nth-child(odd) {
+            background-image: url('cupcake_otono2.png');
+        }
+
+        .autumn-cupcake:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+            transform: rotate(-15deg);
+        }
+        .autumn-cupcake:nth-child(2) {
+            top: 25%;
+            right: 12%;
+            animation-delay: 0.5s;
+            transform: rotate(20deg);
+        }
+        .autumn-cupcake:nth-child(3) {
+            bottom: 10%;
+            left: 5%;
+            animation-delay: 1s;
+            transform: rotate(5deg);
+        }
+        .autumn-cupcake:nth-child(4) {
+            bottom: 20%;
+            right: 8%;
+            animation-delay: 1.5s;
+            transform: rotate(-10deg);
+        }
+        .autumn-cupcake:nth-child(5) {
+            top: 50%;
+            left: 15%;
+            animation-delay: 2s;
+            transform: rotate(10deg);
+        }
+        .autumn-cupcake:nth-child(6) {
+            top: 40%;
+            right: 20%;
+            animation-delay: 2.5s;
+            transform: rotate(-25deg);
+        }
+
+        @keyframes float-cupcake {
+            0% { transform: translateY(0) scale(1); opacity: 0.9; }
+            50% { transform: translateY(-10px) scale(1.05); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.9; }
+        }
+
+        #main-content {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes pulse-text {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.8; }
+        }
+
+        @keyframes pulse-vaquita {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes glow-vaquita {
+            0% { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)); }
+            100% { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4)); }
+        }
+
+        /* --- ESTILO PARA EL MENSAJE ADICIONAL --- */
+        .secondary-message {
+            color: white;
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(0.9rem, 2.5vw, 1.8rem);
+            text-align: center;
+            margin-top: 10px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+
+        .title-container {
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            max-width: 1500px;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out 0.5s;
+        }
+
+        .main-title {
+            color: var(--color-titulo);
+            font-family: 'Great Vibes', cursive;
+            /* Se ha reducido el tamaño de la fuente para que el título sea más pequeño */
+            font-size: clamp(2rem, 8vw, 4.5rem); 
+            text-shadow:
+                0 0 5px rgba(25, 10, 0, 0.8),
+                0 0 10px var(--color-titulo-neon),
+                0 0 15px var(--color-titulo-neon),
+                2px 2px 5px var(--color-sombra-titulo);
+            text-align: center;
+            margin: 0;
+        }
+
+        .falling-leaf {
+            position: absolute;
+            background-color: var(--color-tallo-hoja);
+            opacity: 0;
+            top: -50px;
+            z-index: 1000;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            pointer-events: none;
+            will-change: transform, opacity;
+            border-radius: 50%;
+        }
+        
+        /* --- KEYFRAMES PARA ANIMACIONES --- */
+        @keyframes fall {
+            0% {
+                transform: translate3d(0, 0, 0) rotate(0deg) rotateY(0deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            95% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate3d(100px, 110vh, 0) rotate(360deg) rotateY(180deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="intro-overlay">
+        <div class="autumn-cupcake"></div>
+        <div class="autumn-cupcake"></div>
+        <div class="autumn-cupcake"></div>
+        <div class="autumn-cupcake"></div>
+        <div class="autumn-cupcake"></div>
+        <div class="autumn-cupcake"></div>
+        
+        <img src="vaquita.png" alt="Vaquita con mensaje oculto" id="intro-image">
+        <div class="click-message" id="overlay-text">Presióname ☺️</div>
+    </div>
+
+    <div id="main-content">
+        <div class="night"></div>
+        <div class="title-container">
+            <h1 class="main-title">¡Feliz cumpleaños Susi! 🌹🍂</h1>
+            <p class="secondary-message">✨ No hay palabras para describir todo lo que ya sabes que siento por ti, y al menos en este día tan importante —donde más que hablar cuentan las acciones y los sentimientos sinceros— quiero desearte toda la felicidad y alegría del mundo que siempre te has merecido. No solo hoy, sino cada día de tu maravillosa existencia, deseo que logres todo lo que te propongas y sueñes. Que nunca te falte el amor de tus seres queridos, que siempre tengas salud, y que todas tus decisiones estén llenas de bendiciones y te traigan mucha paz, porque mereces eso y mucho más. Que este nuevo año de vida sea el inicio de momentos hermosos y de grandes logros. Te lo deseo de corazón. ✨<br><br>🎂 Feliz cumpleaños, te amo Susana Morgan. 💖<br>Con mucho cariño,<br>Guillermo<br>Gracias por iluminar mi vida 🖤</p>
+        </div>
+    </div>
+
+    <script>
+        function initializeFallingLeaves() {
+            const body = document.body;
+            const colors = ['#FFD700', '#FFA500', '#DC143C', '#8B4513', '#DAA520', '#A0522D', '#D2691E'];
+            const leafCount = 50;
+
+            for (let i = 0; i < leafCount; i++) {
+                createLeaf();
+            }
+
+            function createLeaf() {
+                const leaf = document.createElement('div');
+                leaf.classList.add('falling-leaf');
+                leaf.style.left = Math.random() * 100 + 'vw';
+                leaf.style.animationDuration = Math.random() * 5 + 5 + 's';
+                leaf.style.animationDelay = Math.random() * 5 + 's';
+                leaf.style.width = Math.random() * 20 + 20 + 'px';
+                leaf.style.height = leaf.style.width;
+                leaf.style.transform = `scale(${Math.random() * 0.5 + 0.5}) rotateZ(${Math.random() * 360}deg) rotateY(${Math.random() * 360}deg)`;
+                const randomColorIndex = Math.floor(Math.random() * colors.length);
+                leaf.style.backgroundColor = colors[randomColorIndex];
+                body.appendChild(leaf);
+
+                leaf.addEventListener('animationiteration', () => {
+                    leaf.remove();
+                    createLeaf();
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeFallingLeaves);
+
+        document.getElementById('intro-overlay').addEventListener('click', function() {
+            var overlay = document.getElementById('intro-overlay');
+            var mainContent = document.getElementById('main-content');
+            
+            overlay.style.opacity = '0';
+            
+            setTimeout(function() {
+                overlay.style.display = 'none';
+                mainContent.style.display = 'block';
+                document.querySelector('.title-container').style.opacity = '1'; 
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
