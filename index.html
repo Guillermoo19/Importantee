@@ -66,13 +66,13 @@
             width: 100%;
             height: 100%;
             background-image: url('fondo_hojas_otono.jpg');
-            background-size: cover;
-            background-position: center;
+            background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+            background-position: center; /* Centra la imagen de fondo */
             background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: center; /* Centra horizontalmente */
+            justify-content: center; /* Centra verticalmente */
             z-index: 9999;
             cursor: pointer;
             transition: opacity 1s ease-in-out;
@@ -80,12 +80,13 @@
             font-family: 'Great Vibes', cursive;
             text-align: center;
             padding: 20px;
+            position: relative; /* Necesario para posicionar cupcakes */
         }
 
         #intro-overlay img {
             max-width: 90%; 
-            max-height: 70vh;
-            object-fit: contain; 
+            max-height: 60vh; /* Ajustado a 60vh para dejar espacio al mensaje */
+            object-fit: contain; /* Asegura que la imagen no se distorsione */
             animation: pulse-vaquita 2s infinite alternate ease-in-out,
                        glow-vaquita 2s infinite alternate ease-in-out;
             transform-origin: center bottom;
@@ -96,7 +97,7 @@
 
         #intro-overlay .click-message {
             margin-top: 20px;
-            font-size: clamp(1rem, 4vw, 2.5rem);
+            font-size: clamp(1rem, 4.5vw, 2.5rem); /* Ligeramente más grande */
             animation: pulse-text 1.5s infinite;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
             z-index: 100;
@@ -129,22 +130,22 @@
             background-image: url('cupcake_otono2.png');
         }
 
-        /* Ajuste de posiciones para que no se amontonen en el celular */
-        .autumn-cupcake:nth-child(1) { top: 8%; left: 8%; animation-delay: 0s; transform: rotate(-15deg); }
-        .autumn-cupcake:nth-child(2) { top: 18%; right: 8%; animation-delay: 0.5s; transform: rotate(20deg); }
-        .autumn-cupcake:nth-child(3) { bottom: 8%; left: 18%; animation-delay: 1s; transform: rotate(5deg); }
-        .autumn-cupcake:nth-child(4) { bottom: 18%; right: 18%; animation-delay: 1.5s; transform: rotate(-10deg); }
-        .autumn-cupcake:nth-child(5) { top: 40%; left: 10%; animation-delay: 2s; transform: rotate(10deg); }
-        .autumn-cupcake:nth-child(6) { top: 30%; right: 10%; animation-delay: 2.5s; transform: rotate(-25deg); }
+        /* Posiciones ajustadas para celulares */
+        .autumn-cupcake:nth-child(1) { top: 5%; left: 5%; animation-delay: 0s; transform: rotate(-15deg); }
+        .autumn-cupcake:nth-child(2) { top: 15%; right: 5%; animation-delay: 0.5s; transform: rotate(20deg); }
+        .autumn-cupcake:nth-child(3) { bottom: 5%; left: 15%; animation-delay: 1s; transform: rotate(5deg); }
+        .autumn-cupcake:nth-child(4) { bottom: 15%; right: 15%; animation-delay: 1.5s; transform: rotate(-10deg); }
+        .autumn-cupcake:nth-child(5) { top: 35%; left: 10%; animation-delay: 2s; transform: rotate(10deg); }
+        .autumn-cupcake:nth-child(6) { top: 25%; right: 10%; animation-delay: 2.5s; transform: rotate(-25deg); }
 
-        /* Media query para un ajuste más específico en móviles */
-        @media (max-width: 600px) {
-            .autumn-cupcake:nth-child(1) { top: 5%; left: 2%; }
-            .autumn-cupcake:nth-child(2) { top: 15%; right: 2%; }
-            .autumn-cupcake:nth-child(3) { bottom: 2%; left: 10%; }
-            .autumn-cupcake:nth-child(4) { bottom: 10%; right: 10%; }
-            .autumn-cupcake:nth-child(5) { top: 40%; left: 5%; }
-            .autumn-cupcake:nth-child(6) { top: 30%; right: 5%; }
+        /* Media query para un ajuste más específico en móviles si fuera necesario, pero las posiciones base ya son responsivas */
+        @media (max-width: 480px) { /* Para móviles muy pequeños */
+            .autumn-cupcake:nth-child(1) { top: 3%; left: 3%; }
+            .autumn-cupcake:nth-child(2) { top: 12%; right: 3%; }
+            .autumn-cupcake:nth-child(3) { bottom: 3%; left: 10%; }
+            .autumn-cupcake:nth-child(4) { bottom: 12%; right: 10%; }
+            .autumn-cupcake:nth-child(5) { top: 30%; left: 5%; }
+            .autumn-cupcake:nth-child(6) { top: 20%; right: 5%; }
         }
 
 
@@ -182,7 +183,7 @@
         .secondary-message {
             color: white;
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(1.1rem, 4vw, 2.2rem); 
+            font-size: clamp(1.2rem, 4.5vw, 2.5rem); /* Ligeramente más grande y adaptable */
             text-align: center;
             margin-top: 10px;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
