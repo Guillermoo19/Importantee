@@ -66,7 +66,7 @@
             width: 100%;
             height: 100%;
             background-image: url('fondo_hojas_otono.jpg');
-            background-size: cover;
+            background-size: cover; /* Asegura que la imagen cubra todo el fondo */
             background-position: center center;
             background-repeat: no-repeat;
             background-color: rgba(0, 0, 0, 0.3);
@@ -85,7 +85,6 @@
         }
 
         #intro-overlay img {
-            /* Se ha reducido el tamaño máximo de la vaquita para que no desborde en pantallas pequeñas */
             max-width: 90%; 
             height: auto;
             max-height: 70vh;
@@ -108,7 +107,6 @@
         /* --- ESTILOS PARA LOS CUPCAKES DE OTOÑO --- */
         .autumn-cupcake {
             position: absolute;
-            /* Se ha reducido el tamaño base de los cupcakes para celulares */
             width: 60px; 
             height: 60px;
             background-size: contain;
@@ -118,7 +116,6 @@
             z-index: 90; 
         }
         
-        /* Media query para ajustar los cupcakes en pantallas más grandes */
         @media (min-width: 600px) {
             .autumn-cupcake {
                 width: 80px;
@@ -134,52 +131,24 @@
             background-image: url('cupcake_otono2.png');
         }
 
-        .autumn-cupcake:nth-child(1) {
-            top: 15%;
-            left: 5%;
-            animation-delay: 0s;
-            transform: rotate(-15deg);
-        }
-        .autumn-cupcake:nth-child(2) {
-            top: 25%;
-            right: 5%;
-            animation-delay: 0.5s;
-            transform: rotate(20deg);
-        }
-        .autumn-cupcake:nth-child(3) {
-            bottom: 10%;
-            left: 15%;
-            animation-delay: 1s;
-            transform: rotate(5deg);
-        }
-        .autumn-cupcake:nth-child(4) {
-            bottom: 20%;
-            right: 15%;
-            animation-delay: 1.5s;
-            transform: rotate(-10deg);
-        }
-        .autumn-cupcake:nth-child(5) {
-            top: 50%;
-            left: 20%;
-            animation-delay: 2s;
-            transform: rotate(10deg);
-        }
-        .autumn-cupcake:nth-child(6) {
-            top: 40%;
-            right: 20%;
-            animation-delay: 2.5s;
-            transform: rotate(-25deg);
-        }
-        
         /* Ajuste de posiciones para que no se amontonen en el celular */
+        .autumn-cupcake:nth-child(1) { top: 8%; left: 8%; animation-delay: 0s; transform: rotate(-15deg); }
+        .autumn-cupcake:nth-child(2) { top: 18%; right: 8%; animation-delay: 0.5s; transform: rotate(20deg); }
+        .autumn-cupcake:nth-child(3) { bottom: 8%; left: 18%; animation-delay: 1s; transform: rotate(5deg); }
+        .autumn-cupcake:nth-child(4) { bottom: 18%; right: 18%; animation-delay: 1.5s; transform: rotate(-10deg); }
+        .autumn-cupcake:nth-child(5) { top: 40%; left: 10%; animation-delay: 2s; transform: rotate(10deg); }
+        .autumn-cupcake:nth-child(6) { top: 30%; right: 10%; animation-delay: 2.5s; transform: rotate(-25deg); }
+
+        /* Media query para un ajuste más específico en móviles */
         @media (max-width: 600px) {
-            .autumn-cupcake:nth-child(1) { top: 10%; left: 5%; }
-            .autumn-cupcake:nth-child(2) { top: 20%; right: 5%; }
-            .autumn-cupcake:nth-child(3) { bottom: 5%; left: 10%; }
-            .autumn-cupcake:nth-child(4) { bottom: 15%; right: 10%; }
-            .autumn-cupcake:nth-child(5) { top: 45%; left: 10%; }
-            .autumn-cupcake:nth-child(6) { top: 35%; right: 10%; }
+            .autumn-cupcake:nth-child(1) { top: 5%; left: 2%; }
+            .autumn-cupcake:nth-child(2) { top: 15%; right: 2%; }
+            .autumn-cupcake:nth-child(3) { bottom: 2%; left: 10%; }
+            .autumn-cupcake:nth-child(4) { bottom: 10%; right: 10%; }
+            .autumn-cupcake:nth-child(5) { top: 40%; left: 5%; }
+            .autumn-cupcake:nth-child(6) { top: 30%; right: 5%; }
         }
+
 
         @keyframes float-cupcake {
             0% { transform: translateY(0) scale(1); opacity: 0.9; }
@@ -215,13 +184,12 @@
         .secondary-message {
             color: white;
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(0.9rem, 2.5vw, 1.8rem);
+            /* Ajuste para que sea más grande y legible en el celular */
+            font-size: clamp(1.1rem, 4vw, 2.2rem); 
             text-align: center;
             margin-top: 10px;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-            /* Se ha reducido el margen inferior para que el texto no se vea cortado */
             margin-bottom: 20px; 
-            /* Se añadió un max-width para evitar que el texto sea demasiado ancho */
             max-width: 90%; 
         }
 
@@ -241,7 +209,6 @@
             transition: opacity 1.2s ease-in-out 0.5s;
         }
         
-        /* Ajuste del contenedor para que se vea mejor en el celular */
         @media (max-width: 600px) {
             .title-container {
                 top: 5%;
@@ -362,8 +329,4 @@
         });
     </script>
 </body>
-<<<<<<< HEAD:importante.html
-</html>s
-=======
 </html>
->>>>>>> 5fa92a070fb52bbebb68032e1ac7186a7a15f20c:index.html
